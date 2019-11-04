@@ -9,11 +9,11 @@
         </div>
         
         <el-menu>
-            <el-menu-item index="2" @click="jump('/editpost')">
+            <el-menu-item index="2" @click="jump('/postlist')">
                 <i class="el-icon-menu"></i>
                 <span slot="title">文章列表</span>
             </el-menu-item>
-            <el-menu-item index="4" @click="jump('/postlist')">
+            <el-menu-item index="4" @click="jump('/editpost')">
                 <i class="el-icon-setting"></i>
                 <span slot="title">发布文章</span>
             </el-menu-item>
@@ -27,7 +27,8 @@
             <img class="avatar" v-else src="/static/img/touxiang.jpg" alt="">
              <span class="nickname">{{user.nickname}}</span>
         </el-header>
-        <el-main>Main
+        <el-main>
+          <breadcrumb/>
             <router-view/>
         </el-main>
     </el-container>
@@ -37,22 +38,26 @@
 </template>
 
 <script>
+import breadcrumb from '../components/breadcrumb'
 export default {
-    data() {
-        return {
-            user: JSON.parse(localStorage.getItem('user'))
-        }
+  components: {
+    breadcrumb
+  },
+  data() {
+    return {
+      user: JSON.parse(localStorage.getItem('user'))
+      }
     },
-    methods: {
-      /**
-       * 业务逻辑的方法
-       */
-      jump(path) {
-        if(path !== this.$route.path) {
-          this.$router.push(path)
-        }
+  methods: {
+    /**
+    * 业务逻辑的方法
+    */
+    jump(path) {
+      if(path !== this.$route.path) {
+         this.$router.push(path)
       }
     }
+  }
 };
 </script>
 
@@ -103,8 +108,6 @@ export default {
   .el-main {
     background-color: #E9EEF3;
     color: #333;
-    text-align: center;
-    line-height: 160px;
   }
   
   body > .el-container {

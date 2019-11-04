@@ -11,16 +11,19 @@ const routes = [
     path: '/', 
     name:'Home',
     component: Home,
+    meta: '首页',
     children: [
       {
         path:'editpost',
         name: 'editPostPage',
-        component: EditPost
+        component: EditPost,
+        meta: '编辑文章',
       },
       {
         path:'postlist',
         name: 'postListPage',
-        component: PostList
+        component: PostList,
+        meta: '文章列表',
       }
     ]
  },
