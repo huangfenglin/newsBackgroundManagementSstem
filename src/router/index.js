@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 const Home =  () => import ('../pages/Home.vue')
 const Login =  () => import ('../pages/Login.vue')
+const EditPost = () => import ('../pages/EditPost.vue')
+const PostList = () => import ('../pages/PostList.vue')
 
 Vue.use(Router)
 const routes = [
@@ -9,10 +11,22 @@ const routes = [
     path: '/', 
     name:'Home',
     component: Home,
+    children: [
+      {
+        path:'editpost',
+        name: 'editPostPage',
+        component: EditPost
+      },
+      {
+        path:'postlist',
+        name: 'postListPage',
+        component: PostList
+      }
+    ]
  },
   { 
     path: '/login', 
-    name:'Login',
+    name:'LoginPage',
     component: Login,
  }
 ] 
